@@ -3,6 +3,9 @@
 # Deployment optimization script
 echo "🚀 Optimizing Filament Application..."
 
+composer install --no-dev --optimize-autoloader
+npm install
+
 # Clear all caches first
 php artisan cache:clear
 php artisan config:clear
@@ -17,5 +20,6 @@ php artisan filament:optimize
 
 # Composer optimization
 composer dump-autoload -o
+npm run build
 
 echo "✅ Optimization completed!"

@@ -77,26 +77,26 @@ class AdminPanelProvider extends PanelProvider
                 'Manajemen Pesanan',
             ])
             ->plugins([
-                // FilamentDeveloperLoginsPlugin::make()
-                //     ->enabled(app()->environment('local'))
-                //     ->users(function () {
-                //         return cache()->remember('dev-login-users', 3600, function () {
-                //             $roles = ['super_admin', 'kasir'];
-                //             $users = \App\Models\User::whereHas('roles', function ($query) use ($roles) {
-                //                 $query->whereIn('name', $roles);
-                //             })->with('roles:id,name')->get();
+                FilamentDeveloperLoginsPlugin::make()
+                    ->enabled(app()->environment('local'))
+                    ->users(function () {
+                        return cache()->remember('dev-login-users', 3600, function () {
+                            $roles = ['super_admin', 'kasir'];
+                            $users = \App\Models\User::whereHas('roles', function ($query) use ($roles) {
+                                $query->whereIn('name', $roles);
+                            })->with('roles:id,name')->get();
 
-                //             $devUsers = [];
-                //             foreach ($users as $user) {
-                //                 $role = $user->roles->first()?->name;
-                //                 if ($role) {
-                //                     $devUsers[ucfirst($role)] = $user->email;
-                //                 }
-                //             }
+                            $devUsers = [];
+                            foreach ($users as $user) {
+                                $role = $user->roles->first()?->name;
+                                if ($role) {
+                                    $devUsers[ucfirst($role)] = $user->email;
+                                }
+                            }
 
-                //             return $devUsers;
-                //         });
-                //     }),
+                            return $devUsers;
+                        });
+                    }),
                 FilamentShieldPlugin::make()
                     ->navigationLabel('Hak Akses')
                     ->modelLabel('Hak Akses')
