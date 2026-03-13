@@ -19,7 +19,8 @@ class ProductForm
                     ->schema([
                         TextInput::make('name')
                             ->label('Nama Produk')
-                            ->required(),
+                            ->required()
+                            ->columnSpanFull(),
                         Select::make('category')
                             ->label('Kategori')
                             ->required()
