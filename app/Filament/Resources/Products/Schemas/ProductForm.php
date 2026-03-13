@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Products\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
@@ -19,6 +20,14 @@ class ProductForm
                         TextInput::make('name')
                             ->label('Nama Produk')
                             ->required(),
+                        Select::make('category')
+                            ->label('Kategori')
+                            ->required()
+                            ->options([
+                                'makanan' => 'Makanan',
+                                'minuman' => 'Minuman',
+                            ])
+                            ->default('makanan'),
                         TextInput::make('price')
                             ->label('Harga Produk')
                             ->required()

@@ -25,6 +25,20 @@ class ProductsTable
                     ->sortable()
                     ->limit(25)
                     ->searchable(),
+                TextColumn::make('category')
+                    ->label('Kategori')
+                    ->sortable()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'makanan' => 'Makanan',
+                        'minuman' => 'Minuman',
+                        default => $state,
+                    })
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'makanan' => 'warning',
+                        'minuman' => 'info',
+                        default => 'gray',
+                    }),
                 TextColumn::make('price')
                     ->label('Harga Produk')
                     ->formatStateUsing(fn ($state) => formatRupiah($state))

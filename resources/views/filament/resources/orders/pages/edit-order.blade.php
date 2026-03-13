@@ -238,6 +238,15 @@ $printBill = function () {
 ?>
 
 <x-filament-panels::page>
+    <style>
+        .text-shadow {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .text-shadow-lg {
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+        }
+    </style>
     @volt
         <div class="flex flex-col lg:flex-row gap-6">
             {{-- Panel Kiri: Daftar Menu --}}
@@ -259,9 +268,10 @@ $printBill = function () {
 
                     {{-- Daftar Menu --}}
                     <div
-                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[60vh] overflow-y-auto hide-scrollbar p-2">
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 max-h-[60vh] overflow-y-auto hide-scrollbar p-2">
                         @forelse ($this->menuItems as $item)
-                            <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center gap-4 hover:ring-2 hover:ring-primary-500 transition-all duration-200 ease-in-out cursor-pointer"
+                            <div class="p-4 rounded-xl shadow-md flex items-center gap-4 hover:ring-2 hover:ring-primary-500 transition-all duration-200 ease-in-out cursor-pointer bg-cover bg-center relative overflow-hidden"
+                                style="background-image: url('{{ Storage::url($item->image) }}');"
                                 wire:click="addItem({{ $item->id }})"
                                 :disabled="in_array($order->status, ['completed', 'cancelled'])">
 
@@ -273,13 +283,13 @@ $printBill = function () {
 
                                 {{-- Container Detail Produk --}}
                                 <div class="flex-1 min-w-0">
-                                    <h4 class="text-base font-semibold text-gray-800 dark:text-white truncate">
+                                    <h4 class="text-base font-semibold text-white text-shadow truncate">
                                         {{ Str::limit($item->name, 40) }}
                                     </h4>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
+                                    <p class="text-xs text-white text-shadow mt-1 line-clamp-2">
                                         {{ Str::limit($item->description, 50) }}
                                     </p>
-                                    <span class="mt-2 text-sm font-bold text-primary-600">
+                                    <span class="mt-2 text-sm font-bold text-white text-shadow-lg">
                                         {{ formatRupiah($item->price) }}
                                     </span>
                                 </div>

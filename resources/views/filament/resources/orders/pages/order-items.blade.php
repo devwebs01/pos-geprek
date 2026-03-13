@@ -122,6 +122,15 @@ $confirmOrder = function () {
 ?>
 
 <x-filament-panels::page>
+    <style>
+        .text-shadow {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .text-shadow-lg {
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+        }
+    </style>
     @volt
         <div class="flex flex-col lg:flex-row gap-6">
             {{-- Panel Kiri: Daftar Menu --}}
@@ -157,13 +166,13 @@ $confirmOrder = function () {
 
                                 {{-- Container Detail Produk --}}
                                 <div class="flex-1 min-w-0">
-                                    <h4 class="text-base font-semibold text-primary-600 truncate">
+                                    <h4 class="text-base font-semibold text-white text-shadow truncate">
                                         {{ Str::limit($item->name, 40) }}
                                     </h4>
-                                    <p class="text-xs text-primary-600 mt-1 line-clamp-2">
+                                    <p class="text-xs text-white text-shadow mt-1 line-clamp-2">
                                         {{ Str::limit($item->description, 50) }}
                                     </p>
-                                    <span class="mt-2 text-sm font-bold text-primary-600">
+                                    <span class="mt-2 text-sm font-bold text-white text-shadow-lg">
                                         {{ formatRupiah($item->price) }}
                                     </span>
                                 </div>
