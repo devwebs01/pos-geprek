@@ -8,9 +8,16 @@
         "framework"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../packages/laravel-license-client"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "bezhansalleh/filament-shield": "^4.0",
+        "devwebs01/gh-license": "@dev",
         "dotswan/filament-laravel-pulse": "^2.1",
         "dutchcodingcompany/filament-developer-logins": "^2.0",
         "filament/filament": "~4.0",
